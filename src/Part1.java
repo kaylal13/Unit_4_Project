@@ -22,6 +22,20 @@ public class Part1 {
             int bar = line.indexOf("|");
             String hand = line.substring(0, bar);
             String bid = line.substring(bar + 1);
+            for (int i =0;i<cards.length;i++) {
+                if (cards[i].equals("Ace")) {
+                    cards[i] = "1";
+                }
+                if (cards[i].equals("Jack")) {
+                    cards[i] = "11";
+                }
+                if (cards[i].equals("Queen")) {
+                    cards[i] = "12";
+                }
+                if (cards[i].equals("King")) {
+                    cards[i] = "13";
+                }
+            }
             String[] cards = hand.split("");
             System.out.println(Arrays.toString(cards));
         }
