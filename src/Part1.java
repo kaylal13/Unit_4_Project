@@ -1,16 +1,70 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Part1 {
-    public void splitInput (){
-        String input = file;
-        int bar = input.indexOf("|");
-        String hand = input.substring (0, bar);
-        String bid = input.substring(bar +1);
-        String [] cards = hand.split("");
+    private int fiveOfKind;
+    private int fourOfKind;
+    private int fullHouse;
+    private int threeOfKind;
+    private int onePair;
+    private int twoPair;
+    private int high;
+    private String[] cards;
+
+    public void getHandType () throws FileNotFoundException {
+       //splits the bid and the card
+        File f = new File("src/data");
+        Scanner input = new Scanner(f);
+        while (input.hasNextLine()) {
+            String line = input.nextLine();
+            int bar = line.indexOf("|");
+            String hand = line.substring(0, bar);
+            String bid = line.substring(bar + 1);
+            String[] cards = hand.split("");
+            System.out.println(Arrays.toString(cards));
+        }
+
+//counts the amount of each card in a new list
+        int[] handCount = new int[13];
+        for (int i = 0; i < cards.length; i++) {
+            if (i!=0){
+                handCount[i]++;
+            }
+        }
+
+        for (int number:handCount){
+            if (number ==5){
+                fiveOfKind++;
+            }
+            if (number==4){
+                fourOfKind++;
+            }
+            if (number==3 || number==2){
+                fullHouse++;
+            }
+            if (number==3){
+               threeOfKind++;
+            }
+
+            if (number==2){
+                onePair++;
+            }
+            if (number==1){
+                high++;
+            }
+        }
     }
 
-
-    int[] handCount = new int[13];
-    for (int i=0;i<handCount.length; i++) {
-
+    public void determineHand (){
+        System.out.println("Number of five of a kind hands: "+fiveOfKind);
+        System.out.println("Number of full house hands: "+fourOfKind);
+        System.out.println("Number of four of a kind hands: "+fullHouse);
+        System.out.println("Number of three of a kind hands: "+threeOfKind);
+//        System.out.println("Number of two pair hands: "+twoPair);
+        System.out.println("Number of one pair hands: "+onePair);
+        System.out.println("Number of high card hands: "+high);
     }
 }
 
