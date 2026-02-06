@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        Part1 testing = new Part1();
-        testing.getHandType();
-        testing.determineHand();
-
+        Part1 hand = new Part1();
+        hand.getHandType();
+        hand.determineHand();
     }
 }
