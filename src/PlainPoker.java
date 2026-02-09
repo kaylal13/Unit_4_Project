@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Part1 {
+public class PlainPoker {
     private int fiveOfKind;
     private int fourOfKind;
     private int fullHouse;
@@ -10,10 +10,12 @@ public class Part1 {
     private int twoPair;
     private int onePair;
     private int high;
+    private int rank;
+    private int bid;
+    private int totalBid;
+
 
     public void getHandType() throws FileNotFoundException {
-
-
         File f = new File("src/data");
         Scanner input = new Scanner(f);
 
@@ -24,6 +26,9 @@ public class Part1 {
 
             int bar = line.indexOf("|");
             String hand = line.substring(0, bar);
+            String stringBid = line.substring(bar+1);
+            int bid = Integer.parseInt(stringBid);
+
 
 
             String[] cards = hand.split(",");
@@ -85,7 +90,21 @@ public class Part1 {
         }
     }
 
-    public void determineHand() {
+    public void getRank() {
+        //there might not be a high card
+        if (high!=0){
+            rank = 1;
+        }
+        //if the hand type is greater than 1 then test which is stronger
+
+
+    }
+
+    public void getTotalBid (){
+        totalBid = rank * bid;
+    }
+
+    public void displayHand() {
         System.out.println("Number of five of a kind hands: " + fiveOfKind);
         System.out.println("Number of full house hands: " + fullHouse);
         System.out.println("Number of four of a kind hands: " + fourOfKind);
@@ -93,6 +112,10 @@ public class Part1 {
         System.out.println("Number of two pair hands: " + twoPair);
         System.out.println("Number of one pair hands: " + onePair);
         System.out.println("Number of high card hands: " + high);
+    }
+
+    public void displayBid(){
+        System.out.println("Total Bid Value: "+totalBid);
     }
 }
 

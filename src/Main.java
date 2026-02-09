@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        Part1 hand = new Part1();
+        PlainPoker hand = new PlainPoker();
         hand.getHandType();
-        hand.determineHand();
+        hand.displayHand();
     }
 }
