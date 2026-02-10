@@ -50,6 +50,7 @@ public class PlainPoker {
                     counts[i] = count;
                 }
             }
+            //convert ace, king, queen( ?) to numbers
 
 
             int pairs = 0;
@@ -87,10 +88,34 @@ public class PlainPoker {
             } else {
                 high++;
             }
+
+            rank =0;
+            if (high != 0){
+                rank = 1;
+            }
+            if (pairs ==1){
+                rank++;
+            }
+            if (pairs==2){
+                rank++;
+            }
+            if (hasThree){
+                rank++;
+            }
+            if (hasThree && pairs == 1){
+                rank++;
+            }
+            if (hasFour){
+                rank++;
+            }
+            if (hasFive){
+                rank++;
+            }
         }
     }
 
     public void getRank() {
+
         //there might not be a high card
         if (high!=0){
             rank = 1;
