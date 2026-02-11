@@ -7,5 +7,8 @@ public class Main {
         PlainPoker hand = new PlainPoker();
         hand.getHandType();
         hand.displayHand();
+        hand.getRank();
+        hand.getTotalBid();
+        hand.displayBid();
     }
 }

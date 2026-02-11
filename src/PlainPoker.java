@@ -110,7 +110,7 @@ public class PlainPoker {
             }
             if (hasFive){
                 rank++;
-            }
+            } //how to add up all ranks/update it (needs a loop?)
         }
     }
 
