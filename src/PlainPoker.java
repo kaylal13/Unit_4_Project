@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class PlainPoker {
@@ -33,7 +34,6 @@ public class PlainPoker {
 
             String[] cards = hand.split(",");
 
-
             int[] counts = new int[cards.length];
             boolean[] counted = new boolean[cards.length];
 
@@ -50,7 +50,7 @@ public class PlainPoker {
                     counts[i] = count;
                 }
             }
-            //convert ace, king, queen( ?) to numbers
+            //convert ace, king, queen to numbers (?)
 
 
             int pairs = 0;
@@ -88,46 +88,20 @@ public class PlainPoker {
             } else {
                 high++;
             }
-
-            rank =0;
-            if (high != 0){
-                rank = 1;
-            }
-            if (pairs ==1){
-                rank++;
-            }
-            if (pairs==2){
-                rank++;
-            }
-            if (hasThree){
-                rank++;
-            }
-            if (hasThree && pairs == 1){
-                rank++;
-            }
-            if (hasFour){
-                rank++;
-            }
-            if (hasFive){
-                rank++;
-            } //how to add up all ranks/update it (needs a loop?)
         }
     }
 
     public void getRank() {
-
-        //there might not be a high card
-        if (high!=0){
-            rank = 1;
+        for (int i =0; i<cards.length; i++){
+            if (i)
         }
-        //if the hand type is greater than 1 then test which is stronger
-
-
     }
 
     public void getTotalBid (){
+
         totalBid = rank * bid;
     }
+    //need to make sure each rank and bid is multiplied for each hand
 
     public void displayHand() {
         System.out.println("Number of five of a kind hands: " + fiveOfKind);
